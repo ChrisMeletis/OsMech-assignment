@@ -8,4 +8,4 @@ Assignment: Create Packaging Management System **to be updated**
  *Courier (Parcel transfering)
  *Customer (Parcel tracking)
 -System uses MySQL database for data logging and package handling
-Brought to you by **ParadoxPrograming.org** :P
+Brought to you by ParadoxPrograming.org :P
