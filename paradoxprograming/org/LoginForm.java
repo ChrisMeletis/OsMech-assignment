@@ -111,7 +111,7 @@ public class LoginForm {
 						System.out.println("Query succeded");
 						String[] propinfo = propertxt.toArray(new String[propertxt.size()]);
 						
-						if(propinfo == null){
+						if(propertxt.isEmpty()){
 							JOptionPane.showMessageDialog(null, "Invalid credentials", "Warning", JOptionPane.INFORMATION_MESSAGE);
 							return;
 						}
