@@ -70,46 +70,47 @@ public class LoginForm {
 		frame.getContentPane().add(lblWelcomeToParcel);
 		
 		JLabel lblParcelManagementSystem = new JLabel("Parcel Management System");
-		lblParcelManagementSystem.setBounds(108, 44, 132, 14);
+		lblParcelManagementSystem.setBounds(100, 44, 170, 14);
 		frame.getContentPane().add(lblParcelManagementSystem);
 		
 		txtUsername = new JTextField();
-		txtUsername.setText("Enter Username");
 		txtUsername.setBounds(103, 69, 122, 20);
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(35, 72, 58, 14);
+		lblUsername.setBounds(35, 72, 70, 14);
 		frame.getContentPane().add(lblUsername);
 		
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(35, 103, 58, 14);
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setBounds(35, 103, 70, 14);
 		frame.getContentPane().add(lblPassword);
 		
 		JLabel lblDevelopedByParadoxae = new JLabel("Developed by Paradox.ae ");
-		lblDevelopedByParadoxae.setBounds(132, 168, 132, 14);
+		lblDevelopedByParadoxae.setBounds(120, 168, 150, 14);
 		frame.getContentPane().add(lblDevelopedByParadoxae);
 		
 		txtEnterPassword = new JTextField();
-		txtEnterPassword.setText("Enter Password");
 		txtEnterPassword.setBounds(102, 100, 123, 20);
 		frame.getContentPane().add(txtEnterPassword);
 		txtEnterPassword.setColumns(10);
 		
 		JButton btnEnter = new JButton("Enter");
-		frame.add(btnEnter);
+		frame.getContentPane().add(btnEnter);
 		btnEnter.addActionListener(
+				
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						System.out.println("Listener anabled");
+						 
+						
+						
 
 						
 						ArrayList<String> propertxt = MainSystem.askDB("SELECT property FROM employees WHERE username = '" + txtUsername.getText() + "' and password = '" + txtEnterPassword.getText() + "';",2,"property","","","","","");
 						username = txtUsername.getText();
 						
-						System.out.println("Query succeded");
-						String[] propinfo = propertxt.toArray(new String[propertxt.size()]);
+						
+						String[] propinfo= propertxt.toArray(new String[propertxt.size()]);
 						
 						if(propertxt.isEmpty()){
 							JOptionPane.showMessageDialog(null, "Invalid credentials", "Warning", JOptionPane.INFORMATION_MESSAGE);
@@ -134,15 +135,23 @@ public class LoginForm {
 							}
 						}
 						else if(propinfo[0].equals("courier")){
-							System.out.println("you are a courier");
-							System.out.println("Courier class is missing please find another job");
+							LoginForm.frame.dispose();
+							try {
+								CourierClass window = new CourierClass();
+								window.frame.setVisible(true);
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
 						}							
 						
 
-						System.out.println(propinfo[0]);
+						
 					}
 				});
 		btnEnter.setBounds(84, 134, 89, 23);
 		frame.getContentPane().add(btnEnter);
+		
+		
 	}
+	
 }

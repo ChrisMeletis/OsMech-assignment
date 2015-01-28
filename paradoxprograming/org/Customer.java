@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -61,16 +61,15 @@ public class Customer {
 		frame.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("Parcel Management System");
-		label_1.setBounds(108, 44, 132, 14);
+		label_1.setBounds(100, 44, 170, 14);
 		frame.getContentPane().add(label_1);
 		
 		JLabel lblEnterYourTrack = new JLabel("Enter your track ID to track your package");
-		lblEnterYourTrack.setBounds(40, 97, 200, 14);
+		lblEnterYourTrack.setBounds(30, 97, 250, 14);
 		frame.getContentPane().add(lblEnterYourTrack);
 		
 		txtTrackingNumber = new JTextField();
 		txtTrackingNumber.setToolTipText("Type your tracking number and we will automaticaly give you its location");
-		txtTrackingNumber.setText("Tracking number");
 		txtTrackingNumber.setBounds(40, 122, 86, 20);
 		frame.getContentPane().add(txtTrackingNumber);
 		txtTrackingNumber.setColumns(10);
@@ -88,8 +87,16 @@ public class Customer {
 
 						ArrayList<String> text = MainSystem.askDB("SELECT Position FROM parcels WHERE PackID='" + txtTrackingNumber.getText() + "';",2,"Position","","","","","");
 						String[] posinfo = text.toArray(new String[text.size()]);
-						lblInfo.setText("<html>Your package position is: <br>" + posinfo[0] + "</html>");
-
+						if(text.isEmpty())
+						{
+							JOptionPane.showMessageDialog(null, "Invalid PackID", "Warning", JOptionPane.INFORMATION_MESSAGE);
+							return;
+						}else
+						{
+							lblInfo.setText("<html>Your package position is: <br>" + posinfo[0] + "</html>");
+						}
+						
+						
 					}
 				});
 		

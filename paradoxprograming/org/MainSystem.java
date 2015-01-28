@@ -27,7 +27,7 @@ public class MainSystem {
 	  try
 	  {
 	   Class.forName("com.mysql.jdbc.Driver").newInstance();
-	   String connectionUrl = "jdbc:mysql://localhost:3306/mech";
+	   String connectionUrl = "jdbc:mysql://localhost:3306/java";
 	   String connectionUser = "root";
 	   String connectionPassword="1234";
 	   conn = DriverManager.getConnection(connectionUrl,connectionUser,connectionPassword);
@@ -61,7 +61,7 @@ public class MainSystem {
 	  {
 	   e.printStackTrace();
 	  }
-	  //System.out.println("name:" + result);
+	  
 	  return result;
 	  
 	 }
