@@ -1,7 +1,7 @@
 # OsMech-assignment
-Assignment: Create Packaging Management System **to be updated**
+Assignment: Create Packaging Management System
 -A simple managing system writen in Java
--System provides its users forms fited to their needs according to the SRS **will be updated**
+-System provides its users forms fited to their needs according to the SRS
 -Systems handles 4 types of users.
  *Administrator (Statistics)
  *Employee (Parcel handling)
